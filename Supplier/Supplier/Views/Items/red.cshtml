@@ -1,0 +1,26 @@
+﻿@model Items;
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<div class="container-fluid">
+    <button type="button" class="btn btn-primary" onclick="Save('@Model.Gi')">Save</button>
+    <div class="row">
+
+
+        <div class="col-sm-6 mt-4">
+            @Html.LabelFor(m =>m.Item_Name)
+            @Html.TextBoxFor(m =>m.Item_Name,new { @class = "form-control" })
+        </div>
+
+        <div class="col-sm-6 mt-4">
+            @Html.LabelFor(m => m.Notes)
+            @Html.TextBoxFor(m => m.Notes,new { @class = "form-control" })
+        </div>
+
+    </div>
+
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
+
+<script src="~/js/javascriptitem.js"></script>

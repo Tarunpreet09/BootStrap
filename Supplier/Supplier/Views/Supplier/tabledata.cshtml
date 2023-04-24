@@ -1,0 +1,28 @@
+﻿<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script src="~/js/javascript.js"></script>
+
+@model Suppliers
+
+
+<button type="button" class="btn btn-primary" onclick="Add('0')">Add</button>
+
+<table class="table">
+    <tr>
+        <th>Supplier Name</th>
+        <th>State</th>
+        <th>Action</th>
+    </tr>
+    <tbody id="data">
+    </tbody>
+</table>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
+<script id="templatefile" type="x-tmpl-mustache">
+      <tr>
+       <td> {{supplier_Name}}</td>
+       <td> {{state}} </td>
+        <td><input type="button" onclick="Add('{{gid}}')" value="Edit" class="btn btn-success"></td>
+        <td><input type="button" onclick="Delete('{{gid}}')" value="Delete" class="btn btn-danger"></td>
+    </tr>
+</script>
+

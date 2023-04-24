@@ -1,0 +1,29 @@
+﻿<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script src="~/js/javascriptitem.js"></script>
+
+@model Items;
+
+<button type="button" class="btn btn-primary" onclick="Add('0')">Add</button>
+
+<table class="table">
+    <tr>
+        <th>Item Name</th>
+        <th>Notes</th>
+        <th>Actions</th>
+    </tr>
+    <tbody class="data123">
+    </tbody>
+</table>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
+<script class="templatefile123" type="x-tmpl-mustache">
+      <tr>
+       <td>{{item_Name}}</td>
+       <td>{{notes}}</td>
+        <td><input type="button" onclick="Add('{{gi}}')" value="Edit" class="btn btn-success"></td>
+        <td><input type="button" onclick="Delete('{{gi}}')" value="Delete" class="btn btn-danger"></td>
+    </tr>
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script src="~/js/javascriptitem.js"></script>

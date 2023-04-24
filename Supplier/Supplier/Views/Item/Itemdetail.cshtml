@@ -1,0 +1,21 @@
+﻿
+<script src="~/js/item.js"></script>
+@model Items
+
+<div class="container-fluid">
+    <button type="button" class="btn btn-primary" onclick="Save()">Save</button>
+    <div class="row">
+
+
+       <div class="col-sm-6 mt-4">
+            @Html.LabelFor(m =>m.Name)
+            @Html.TextBoxFor(m =>m.Name,new { @class = "form-control" })
+        </div>
+
+        <div class="col-sm-6 mt-4">
+            @Html.LabelFor(m => m.Notes)
+            @Html.TextBoxFor(m => m.Notes,new { @class = "form-control" })
+        </div>
+
+        </div>
+</div>
