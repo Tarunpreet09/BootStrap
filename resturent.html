@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+    <title>Restaurent</title>
+    <style>
+        ul {
+            list-style-type: none;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        table,
+        th,
+        tr,
+        td {
+
+            justify-content: space-around;
+            padding: 20px;
+        }
+
+        #div-1,
+        #div-2 {
+            /* background-color: aqua; */
+            text-align: center;
+            height: 650px;
+        }
+
+        table {
+            width: 1000px;
+            justify-content: space-around;
+            height: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-sm bg-light navbar-light">
+        <div class="container-fluid">
+            <ul class="nav justify-content-center">
+            <li class="nav-item">
+              <a class="nav-link active" href="new_Task.html">Employee Data</a>
+            </li>
+           <li class="nav-item">
+              <a class="nav-link" href="resturent.html">Restaurent</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="assignment12.html">Animal</a>
+            </li>
+           
+          </ul>
+        </div>
+      </nav>
+    <div class="container-fuild background bg-light">
+        <div class="row">
+            <div id="div-1" class="col-sm-6" style="margin-top: 12px;">
+
+                <h1>ENTER THE DATA OF Your ORDER</h1>
+
+                <p>Name : <input type="text" class="fs-5" id="name"></p>
+
+                <p>Mobile No: <input type="number" name="mobile" maxlength="10" min="6000000000" max="90000000000"
+                        id="mobile" class="fs-5" style="width: 220px;"></p>
+
+                <div>
+                    <nav class=" navbar navbar-expand  ">
+                        <div class="container-fluid ">
+                            <div class="collapse navbar-collapse" id="mynavbar">
+                                <ul class="nav nav-tabs  me-auto">
+                                    <li class="nav-item">
+                                        <a class="nav-link active text-primary" f-bs-toggle="tab" href="#juice"
+                                            id="drink" onclick="drink()">juice</a>
+                                    </li>
+                                    <li class="nav-item ">
+                                        <a class="nav-link text-primary" href="#burger" id="eat" onclick="eat()"
+                                            data-bs-toggle="tab">Burger</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-primary" id="eats" href="#sandwich" onclick="eats()"
+                                            data-bs-toggle="tab">
+                                            Sandwich</a>
+                                    </li>
+                                </ul>
+                                <form class="d-flex">
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                        data-bs-target="#myModal">+ADD
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+
+                <!-- <input type="checkbox" id="kk"> -->
+               
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="juice">
+                        <table class="table table-bordered table-primary" id="juicetab" name="ff">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Name</th>
+                                    <th>Price</th>
+                                    <th>Quantity</th>
+                                </tr>
+                            </thead>
+                            <tbody id="juicedata">
+                                <tr>
+                                    <td><input type="checkbox" id="check_1" for="quan_1" onclick="disable1(this)"></td>
+                                    <td id="nam_1">Juice</td>
+                                    <td id="num_1">40</td>
+                                    <td>
+                                        <input type="number" min="1" max="10" id="quan_1" selected disabled>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td><input type="checkbox" id="check_2" onclick="disable1(this)"></td>
+                                    <td id="nam_2">Orange-juice</td>
+                                    <td id="num_2">50</td>
+                                    <td>
+                                        <form action="#"><input type="number" min="1" max="10" id="quan_2" selected disabled></form>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td><input type="checkbox" id="check_3" onclick="disable1(this)"></td>
+                                    <td id="nam_3">Kivi Juice</td>
+                                    <td id="num_3">70</td>
+                                    <td>
+                                        <input type="number" min="1" max="10" id="quan_3" selected disabled>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                    <div class="tab-pane fade" id="burger">
+                        <table class="table table-bordered table-primary" id="burgertab">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Name</th>
+                                    <th>Price</th>
+                                    <th>Quantity</th>
+                                </tr>
+                            </thead>
+                            <tbody id="burgerdata">
+                                <tr>
+                                    <td><input type="checkbox" id="bcheck_1" onclick="disable2(this)"></td>
+                                    <td id="bnum_1">Burger</td>
+                                    <td id="bprice_1">50</td>
+                                    <td>
+                                        <input type="number" min="1" max="10" id="bquan_1" selected disabled>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td><input type="checkbox" id="bcheck_2" onclick="disable2(this)"></td>
+                                    <td id="bnum_2">Veg Burger</td>
+                                    <td id="bprice_2">70</td>
+                                    <td>
+                                        <input type="number" min="1" max="10" id="bquan_2" selected disabled>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td><input type="checkbox" id="bcheck_3" onclick="disable2(this)"></td>
+                                    <td id="bnum_3">Non-Veg Burger</td>
+                                    <td id="bprice_3">100</td>
+                                    <td>
+                                        <input type="number" min="1" max="10" id="bquan_3" selected disabled>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="tab-pane fade" id="sandwich">
+                        <table class="table table-bordered table-primary" id="sandtab">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Name</th>
+                                    <th>Price</th>
+                                    <th>Quantity</th>
+                                </tr>
+                            </thead>
+                            <tbody id="sandwichlist">
+                                <tr>
+                                    <td><input type="checkbox" id="sand_1" onclick="disable3(this)"></td>
+                                    <td id="sn_1">sandwich</td>
+                                    <td id="sp_1">40</td>
+                                    <td>
+                                        <form action="#"><input type="number" min="1" max="10" id="sq_1" selected disabled></form>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td><input type="checkbox" id="sand_2" onclick="disable3(this)"></td>
+                                    <td id="sn_2">Veg sandwich</td>
+                                    <td id="sp_2">40</td>
+                                    <td>
+                                        <form action="#"><input type="number" min="1" max="10" id="sq_2" selected disabled></form>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td><input type="checkbox" id="sand_3" onclick="disable3(this)"></td>
+                                    <td id="sn_3">Non sandwich</td>
+                                    <td id="sp_3">40</td>
+                                    <td>
+                                        <form action="#"><input type="number" min="1" max="10" id="sq_3" selected disabled></form>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+                <!-- The Modal -->
+                <div class="modal" id="myModal">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title">ADD DATA</h4>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                                <label for="name2">Name
+                                    <input type="text" id="name2" placeholder="Name">
+                                </label>
+                                <br><br>
+                                <label for="price1">Price
+                                    <input type="text" id="price1" placeholder="Price">
+                                </label>
+                                <br><br>
+                                <label for="option">Item:-
+                                    <select name="" id="option">
+                                        <option value="">choose option</option>
+                                        <option value="Juice">Juice</option>
+                                        <option value="Burger">Burger</option>
+                                        <option value="Sandwich">Sandwich</option>
+                                    </select>
+                                </label>
+                            </div>
+
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-success btn-lg" data-bs-dismiss="modal"
+                                    id="plus">Add</button>
+                                <button type="button" class="btn btn-danger btn-lg" data-bs-dismiss="modal"
+                                    id="plus">Close</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <br>
+                <br>
+                <button type="button" class="btn btn-primary btn-lg" id="btn1" class="btn">Place Order</button>
+                <!-- <button type="button" class="btn btn-primary btn-lg" id="btn2" style="margin-left: 20px;">+Add</button> -->
+
+
+            </div>
+
+
+
+
+            <div id="div-2" class="col-sm-6">
+
+
+                <div id="data" style="margin-top: 5px;"></div>
+                <div class="row">
+                    <div class="col-4"></div>
+                    <div class="col-4" style="display: none;" id="bill">
+                        <h2>BILL OF ORDER</h2>
+
+                    </div>
+                    
+                    
+                </div>
+                <button type="button" id="view" class="btn btn-primary btn-lg" style="display: none;">View Bill</button >
+                <br>
+                <br>
+                <br>
+                <br>
+
+                <!-- <div class="col-6" id="right" style="display: none;">
+                    <table id="tab2">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Total</th>
+                            </tr>
+                            <tbody>
+                                
+                </div> -->
+                
+                <table id="tab1"  style="display: none;">
+
+                    <thead class="table table-bordered table-primary">
+
+                        <tr>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                        </tr>
+                        <tbody class="table table-bordered table-pr">
+
+                        </tbody>
+                    </thead>
+                </table>
+
+               
+                
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+</body>
+
+<script>
+
+
+
+// if ($('input[name=ff]:checked').length) {
+//     $("tr>").find("td:nth-child(4)").find(":input").focus();
+// }
+
+   var grandtotal = 0
+   var count =3;
+
+    $('#view').click(function () {
+        var u = $("#juicetab").find(":checked"); //array is u
+
+        jQuery.each(u, function (i, val) {
+
+            var r = val.id;
+            // alert(r)
+            var ans = r.slice(-1);
+            var as1 = $("#juicetab").find("#nam_" + ans).html();
+            var as2 = $("#juicetab").find("#num_" + ans).html();
+            var as3 = $("#juicetab").find("#quan_" + ans).val();
+            var total = as2 * as3;
+            grandtotal = grandtotal + total
+
+
+            htmllist1 = `<tr>
+    <td>${(as1)}</td>
+    <td>${(as2)}</td>
+    <td>${(as3)}</td>
+    <td>${(total)}</td>
+    </tr>`
+
+            $('#tab1').append(htmllist1)
+            
+
+
+        });
+    });
+
+    $('#view').click(function () {
+        var u = $("#burgertab").find(":checked"); //array is u
+        // alert(u)
+
+        jQuery.each(u, function (i, val) {
+
+            var r = val.id;
+            var ans = r.slice(-1);
+            var as1 = $("#burgertab").find("#bnum_" + ans).html();
+            var as2 = $("#burgertab").find("#bprice_" + ans).html();
+            var as3 = $("#burgertab").find("#bquan_" + ans).val();
+            var total = as2 * as3;
+            grandtotal = grandtotal + total
+
+
+
+            htmllist1 = `<tr>
+    <td>${(as1)}</td>
+    <td>${(as2)}</td>
+    <td>${(as3)}</td>
+    <td>${(total)}</td>
+    </tr>`
+
+            $('#tab1').append(htmllist1)
+           
+
+
+        });
+    });
+
+    $('#view').click(function () {
+        var u = $("#sandtab").find(":checked"); //array is u
+
+        jQuery.each(u, function (i, val) {
+
+            var r = val.id;
+            var ans = r.slice(-1);
+            var as1 = $("#sandtab").find("#sn_" + ans).html();
+            var as2 = $("#sandtab").find("#sp_" + ans).html();
+            var as3 = $("#sandtab").find("#sq_" + ans).val();
+            var total = as2 * as3;
+            grandtotal = grandtotal + total
+
+
+            htmllist1 = `<tr>
+    <td>${(as1)}</td>
+    <td>${(as2)}</td>
+    <td>${(as3)}</td>
+    <td>${(total)}</td>
+    </tr>`
+
+            $('#tab1').append(htmllist1)
+           
+
+
+        });
+        htmllist1 = `<tr >
+            <td></td>
+             <td></td>
+             <td>Grand Total:</td> 
+             <td>${(grandtotal)}</td>
+                </tr>`
+        $("#tab1").append(htmllist1);
+        
+    });
+
+
+
+
+
+    $('#plus').click(function () {
+
+
+        var jsonn = {}
+        jsonn.no = $('#name2').val()
+        jsonn.np = $('#price1').val()
+
+        var arr = []
+        arr.push(jsonn)
+
+        var htmllist = ""
+        arr.forEach(function (value) {
+
+            if ($('#option').val() == "Juice") {
+                htmllist = data(value);
+                $('#juicedata').append(htmllist)
+            }
+
+            if ($('#option').val() == "Burger") {
+                htmllist = data1(value);
+                $('#burgerdata').append(htmllist)
+            }
+
+            if ($('#option').val() == "Sandwich") {
+                htmllist = data2(value);
+                $('#sandwichlist').append(htmllist)
+            }
+        })
+
+
+    })
+    // it means function of value =a 
+
+    function data(value) {
+        count++
+        return `<tr>
+        <td><input type="checkbox" id="check_${count}" onclick="disable1(this)" </td>
+        <td id="nam_${count}">${value.no}</td>
+        <td id="num_${count}">${value.np}</td>
+        <td><input type="number" min="1" max="10"  id="quan_${count}" selected disabled></td>
+        </tr>`;
+    }
+    function data1(value) {
+        count++
+        return `<tr>
+        <td><input type="checkbox" id="bcheck_${count}" onclick="disable2(this)"</td>
+        <td id="bnum_${count}">${value.no}</td>
+        <td id="bprice_${count}">${value.np}</td>
+        <td><input type="number" min="1" max="10"  id="bquan_${count}" selected disabled></td>
+        </tr>`;
+    }
+    function data2(value) {
+        count++
+        return `<tr>
+        <td><input type="checkbox" id="sand_${count}" onclick="disable3(this)"</td>
+        <td id="sn_${count}">${value.no}</td>
+        <td id="sp_${count}">${value.np}</td>
+        <td><input type="number" min="1" max="10"  id="sq_${count}" selected disabled></td>
+        </tr>`;
+    }
+
+    $('#btn1').click(function () {
+        var x = $('#name').val()
+        var y = $('#mobile').val()
+        $('#data').html(`<p><b>Name : </b>${x}</p><p><b>Mobile number : </b>${y}</p>`)
+        $('#view').show()
+    })
+
+    
+
+    $('#view').click(function(){
+
+        $('#tab1').show()
+        
+
+})
+
+
+// to enable the input field when checked
+function disable1(value5){
+     var ans5=value5.id;
+     var ans6=ans5.slice(-1);
+          $('#check_'+ans6).change(function () {
+            $("#quan_"+ans6).prop("disabled", !$(this).is(':checked'));
+
+        })
+    };
+
+    function disable2(value5){
+     var ans5=value5.id;
+     var ans6=ans5.slice(-1);
+          $('#bcheck_'+ans6).change(function () {
+            $("#bquan_"+ans6).prop("disabled", !$(this).is(':checked'));
+
+        })
+    };
+
+
+    function disable3(value5){
+     var ans5=value5.id;
+     var ans6=ans5.slice(-1);
+          $('#sand_'+ans6).change(function () {
+            $("#sq_"+ans6).prop("disabled", !$(this).is(':checked'));
+
+        })
+    };
+  
+
+   
+
+   
+
+
+
+
+</script>
+
+</html>

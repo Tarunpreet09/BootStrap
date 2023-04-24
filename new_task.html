@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+
+<body style="background-color: cadetblue;">
+    <nav class="navbar navbar-expand-sm bg-light navbar-light">
+        <div class="container-fluid">
+            <ul class="nav justify-content-center">
+            <li class="nav-item">
+              <a class="nav-link active" href="new_Task.html">Employee Data</a>
+            </li>
+           <li class="nav-item">
+              <a class="nav-link" href="resturent.html">Restaurent</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="assignment12.html">Animal</a>
+            </li>
+           
+          </ul>
+        </div>
+      </nav>
+      
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-6">
+                <div class="mt-3">
+                    <label for="Name">Name</label>
+                    <input type="text" id="Name">
+                </div>
+                <div class="mt-3">
+                    <label for="About">About</label>
+                    <textarea name="" id="About" cols="21" rows="0"></textarea>
+                </div>
+                <div class="mt-3">
+                    <label for="Gender">Gender</label>
+                    <input type="radio" name="same" value="Male">Male
+                    <input type="radio" name="same" value="Female">Female
+                    
+                </div>
+                <div class="mt-3">
+                    <label for="Department">Department</label>
+                    <select name="" id="sel">
+                        <option value="">--Select--</option>
+                        <option value="A">HR</option>
+                        <option value="B">Testing</option>
+                        <option value="C">Developing</option>
+                        <option value="D">Designing</option>
+                    </select>
+                </div>
+
+                <div class="mt-3">
+                <button onclick="show()" class="btn btn-primary">Save</button>
+                </div>
+
+                <div id="country">
+                    <div class="mt-3">
+                        <input type="checkbox" name="checkb" id="chk_1">
+                        <label for="chk_1" id="lab_1">Printout</label>
+                        <input type="number" id="num_1">
+                    </div>
+                    <div class="mt-3">
+                        <input type="checkbox" name="checkb" id="chk_2">
+                        <label for="chk_2" id="lab_2">Typing</label>
+                        <input type="number" id="num_2">
+                    </div>
+                    <div class="mt-3">
+                        <input type="checkbox" name="checkb" id="chk_3">
+                        <label for="chk_3" id="lab_3">Networking</label>
+                        <input type="number" id="num_3">
+                    </div>
+
+                    <div class="mt-3">
+                        <input type="checkbox" name="checkb" id="chk_4">
+                        <label for="chk_4" id="lab_4">Repairing</label>
+                        <input type="number" id="num_4">
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="col-6">
+
+                <div style="display:none;" id="info_box">
+                    <div id="New_Data" class="mt-3"></div>
+                    <div>
+                        <button onclick="done()" class="btn btn-primary btn-lg">Done</button>
+                        <button onclick="undone()"  class="btn btn-primary btn-lg">Undone</button>
+                        <button onclick="total_time()"  class="btn btn-primary btn-lg">Total Time</button>
+                    </div>
+
+                    <div id="result"></div>
+                    <div id="undone_result"></div>
+                    <div id="Time"></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+<script>
+
+    var TOTAL_TIME = 0;
+    function show() {
+        var name = $("#Name").val();
+        var about = $("#About").val();
+        var radio = $(":input[type=radio]:checked").val();
+        var sel = $("#sel").val();
+        var txt = `<p>Name:${name}</p>
+        <p>About:${about}</p>
+        <p>Gender:${radio}</p>
+        <p>Department:${sel}</p>`;
+        $("#New_Data").html(txt);
+        $("#info_box").show();
+    }
+
+
+
+    var txt = "";
+    function done() {
+        var checked_obj = $('input[type=checkbox]:checked');
+        jQuery.each(checked_obj, function (i, val) {
+            var checkbox_id = val.id;//chk_167
+            var index_of_underscore = checkbox_id.indexOf('_');
+            var last_number = checkbox_id.slice(index_of_underscore + 1);
+            var label_value = $("#lab_" + last_number).text();
+            var input_val = $("#num_" + last_number).val();
+            var status = true;
+            if (input_val > 0) {
+                TOTAL_TIME += parseInt(input_val);
+                txt += `Task:${label_value} Completed:${status} Took Time:${input_val}<br>`;
+                $("#undone_result").html("");
+                $("#Time").html("");
+                $("#result").html(txt);
+            }
+        }
+        )
+    }
+
+
+    var txt2 = "";
+    function undone() {
+        var unchecked_obj = $('input[type=checkbox]:not(:checked)')
+        jQuery.each(unchecked_obj, function (i, val) {
+            var checkbox_id = val.id;
+            var index_of_underscore = checkbox_id.indexOf('_');
+            var last_number = checkbox_id.slice(index_of_underscore + 1);
+            var label_value = $("#lab_" + last_number).text();
+            var input_val = $("#num_" + last_number).val();
+            var status = false;
+            if (input_val > 0) {
+                TOTAL_TIME += parseInt(input_val);
+                txt2 += `Task:${label_value} Completed:${status} Took Time:${input_val}<br>`;
+                $("#result").html("");
+                $("#Time").html("");
+                $("#undone_result").html(txt2);
+            }
+        }
+        )
+    }
+
+    function total_time() {
+        $("#undone_result").html("");
+        $("#result").html("");
+        $("#Time").html(TOTAL_TIME);
+    }
+
+</script>
+
+</html>

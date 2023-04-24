@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cat/Dpg</title>
+    <link rel="stylesheet" href="style2.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</head>
+
+<body style="background-color: cadetblue;">
+    <nav class="navbar navbar-expand-sm bg-light navbar-light">
+        <div class="container-fluid">
+          <ul class="nav justify-content-center">
+            <li class="nav-item">
+              <a class="nav-link active" href="new_Task.html">Employee Data</a>
+            </li>
+           <li class="nav-item">
+              <a class="nav-link" href="resturent.html" style="margin-left: 50px;">Restaurent</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="assignment12.html">Animal</a>
+            </li>
+           
+          </ul>
+        </div>
+      </nav>
+
+
+    <div style="margin-left: 10px; margin-top: 30px;">
+        <b style="font-size: 20px;">Name</b>
+        <input type="text" class="input1" id="put1" placeholder="Name" style="font-size: 20px">
+        <b style="margin-left: 180px; font-size: 20px;">Filter</b>
+        <select name="All" class="filter-handle" id="sl" onchange="fan()">
+            <option value="">All</option>
+            <option value="Dog">Dog</option>
+            <option value="Cat">Cat</option>
+        </select>
+        <br><br>
+        <b style="font-size: 20px">Age</b>
+        <input type="number" class="input2" id="put2" placeholder="Age" style="font-size: 20px"><br><br>
+        <b style="font-size: 20px">Category</b>
+        <select name="Select" id="slc1">
+            <option value="Select">Select</option>
+        </select><br><br>
+        <b style="font-size: 20px;">Breed</b>
+        <select name="Select" id="slc2">
+            <option value="Choose">Choose</option>
+        </select><br><br>
+        <b style="font-size: 20px;">Gender</b>
+        <input type="radio" name="gender" id="put3" value="Male"> <b>Male</b>
+        <input type="radio" name="gender" id="put4" value="Female"> <b>Female</b>
+    </div>
+    </div>
+    <div class="container"> <button onclick="func()">Submit</button> </div>
+    <table id="tab"></table>
+</body>
+<script>
+    var subjectObject = {
+        "Dog": {
+            "Lebra": [],
+            "Golden": [],
+        },
+        "Cat": {
+            "Maine Coon": [],
+            "Ragdoll": []
+        }
+    }
+    window.onload = function () {
+        var categorySel = document.getElementById("slc1");
+        var breedSel = document.getElementById("slc2");
+        for (var x in subjectObject) {
+            categorySel.options[categorySel.options.length] = new Option(x, x);
+        }
+        categorySel.onchange = function () {
+            breedSel.length = 1;
+            for (var y in subjectObject[this.value]) {
+                breedSel.options[breedSel.options.length] = new Option(y, y);
+            }
+        }
+    }
+    var arr = [];
+    var table = document.getElementById("tab");
+    function func() {
+        table.innerHTML = `<tr><th>Picture</th><th>Name</th><th>Age</th><th>Category</th><th>Breed</th><th>Gender</th></tr>`
+        var obj = {};
+        obj.name = document.getElementById("put1").value;
+        obj.age = document.getElementById("put2").value;
+        obj.category = document.getElementById("slc1").value;
+        obj.breed = document.getElementById("slc2").value;
+        var radios = document.getElementsByName("gender");
+        var selected = Array.from(radios).find(radio => radio.checked);
+        obj.gender = selected.value;
+        if (obj.name != "" && obj.age != "" && obj.category != "" && obj.breed != "" && obj.gender != "") {
+            arr.push(obj);
+            arr.forEach(function func(value) {
+                var tr = document.createElement('tr')
+                if (value.breed == "Lebra") {
+                    tr.innerHTML =
+                    `<td class="dog"> <img class="card-img-top" src="https://www.petsworld.in/blog/wp-content/uploads/2015/06/thinkstock_rf_photo_of_labrador_retriever.jpg" alt="Card image" style="width:50%"></td>
+                      <td class="dog"> ${value.name} </td>                 
+                      <td class="dog"> ${value.age} </td> 
+                      <td class="dog"> ${value.category} </td> 
+                      <td class="dog"> ${value.breed} </td> 
+                      <td class="dog"> ${value.gender} </td>`;
+
+                }
+
+                if (value.breed == "Golden") {
+                    tr.innerHTML =
+                        `<td class="dog"> <img class="card-img-top" src="https://media.istockphoto.com/id/1361794658/photo/a-labrador-retriever-dog-in-the-park.jpg?b=1&s=170667a&w=0&k=20&c=rtFODV2HwPiEhaG9i_KJE4KeYa7yxcraYn-rLuJ8NLU=" alt="Card image" style="width:50% "></td>
+                      <td class="dog"> ${value.name} </td>                 
+                      <td class="dog"> ${value.age} </td> 
+                      <td class="dog"> ${value.category} </td> 
+                      <td class="dog"> ${value.breed} </td> 
+                      <td class="dog"> ${value.gender} </td>`;
+                }
+
+                if (value.breed == "Maine Coon") {
+                    tr.innerHTML =
+                        `<td class="cat"> <img class="card-img-top" src="https://www.thesprucepets.com/thmb/9ucrMCMSd2R_HJs_lI-kFgjaYkc=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-1189893683-e0ff70596b3b4f0687ba573e5a671f74.jpg" alt="Card image" style="width:50%"></td>
+                      <td class="cat"> ${value.name} </td>                 
+                      <td class="cat"> ${value.age} </td> 
+                      <td class="cat"> ${value.category} </td> 
+                      <td class="cat"> ${value.breed} </td> 
+                      <td class="cat"> ${value.gender} </td>`;
+                }
+
+                if (value.breed == "Ragdoll") {
+                    tr.innerHTML =
+                        `<td class="cat"> <img class="card-img-top" src="https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F47%2F2020%2F09%2F24%2Fragdoll-554742943-2000.jpg" alt="Card image" style="width:50%; margin-left:0px"></td>
+                      <td class="cat"> ${value.name} </td>                 
+                      <td class="cat"> ${value.age} </td> 
+                      <td class="cat"> ${value.category} </td> 
+                      <td class="cat"> ${value.breed} </td> 
+                      <td class="cat"> ${value.gender} </td>`;
+                }
+
+                {
+                    table.appendChild(tr);
+                }
+            })
+        }
+    }
+    function fan() {
+            var c = $("#sl").val();
+    
+            if (c == "Dog") {
+                $(".dog").show();
+                $(".cat").hide();
+            }
+            else if (c == "Cat") {
+                $(".cat").show();
+                $(".dog").hide();
+            }
+            else {
+                $(".dog").show();
+                $(".cat").show();
+            }
+    }
+
+</script>
+
+</body>
+
+</html>
