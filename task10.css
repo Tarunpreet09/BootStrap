@@ -1,0 +1,12 @@
+img{
+    height: 80%;
+    /* width: 80%; */
+}
+.contaxt{
+    margin: 20px;
+}
+.domain{
+    background-color: hsl(0deg 0% 22%);
+    color: white;
+}
+
